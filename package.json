@@ -1,22 +1,31 @@
 {
-  "name": "with-typescript",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "type-check": "tsc"
-  },
-  "dependencies": {
-    "next": "latest",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
-  "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
-    "typescript": "4.0"
-  },
-  "license": "MIT"
+	"name": "with-typescript",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"generate": "yarn typegen ./utils/openapi.json > ./utils/up-client.d.ts",
+		"generate1": "npx openapi-typescript https://raw.githubusercontent.com/up-banking/api/master/v1/openapi.json --output ./utils/up-api-types.ts",
+		"generate2": "npx openapi-typescript ./utils/openapi.json --output ./utils/up-api-types.ts",
+		"type-check": "tsc"
+	},
+	"dependencies": {
+		"@chakra-ui/react": "^1.1.6",
+		"@emotion/react": "^11.1.4",
+		"@emotion/styled": "^11.0.0",
+		"framer-motion": "^3.2.2-rc.1",
+		"next": "latest",
+		"openapi-client-axios-typegen": "^1.1.11",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"swr": "^0.4.0"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.21",
+		"@types/react": "^16.9.16",
+		"@types/react-dom": "^16.9.4",
+		"typescript": "4.0"
+	},
+	"license": "MIT"
 }

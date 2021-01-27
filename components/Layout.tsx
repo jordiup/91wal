@@ -1,41 +1,71 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import {
+	Avatar,
+	Box,
+	Button,
+	chakra,
+	Container,
+	Link,
+	Table,
+	TableCaption,
+	Tbody,
+	Td,
+	Th,
+	Thead,
+	Tr,
+	useColorMode,
+} from '@chakra-ui/react';
+import { Item, PrismaClient } from '@prisma/client';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import React from 'react';
+import { SimpleNavbar } from '../generic/SimpleNavbar';
+import StyledLink from '../generic/StyledLink';
 
-type Props = {
-  children?: ReactNode
-  title?: string
+interface Props {
+	withContainer?: boolean;
+	children?: React.ReactNode;
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+/**
+ * Layout composes SimpleNavbar and justifies children content
+ * @param param0
+ */
 
-export default Layout
+const Layout: React.FC<Props> = (props: Props) => {
+	const { colorMode, toggleColorMode } = useColorMode();
+
+	return (
+		<Box>
+			<Head>
+				<title>91wal</title>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			{/* <SimpleNavbar
+        title="PLEXIMUS"
+        navlinks={[
+          { path: "/", text: "Items" },
+          { path: "/contacts", text: "Contacts" },
+          { path: "/companies", text: "Companies" },
+          { path: "/product-ranges", text: "Product Ranges" },
+        ]}
+        ctaItems={[
+          <Button onClick={toggleColorMode} size="xs">
+            {colorMode == "dark" ? "🌞" : "🌜"}
+          </Button>,
+          <StyledLink href="/logout">Logout</StyledLink>,
+          <Avatar size="xs" />,
+        ]}
+      /> */}
+			{/* mt 4.5 is needed to offset the navbar */}
+			<Box as="main" mt="4.5rem" p={2}>
+				{props.withContainer ? (
+					<Container maxW="1200px">{props.children}</Container>
+				) : (
+					props.children
+				)}
+			</Box>
+		</Box>
+	);
+};
+
+export default Layout;

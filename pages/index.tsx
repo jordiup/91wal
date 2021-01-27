@@ -1,15 +1,47 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from 'next/link';
+import Layout from '../components/Layout';
+import { components, paths } from '../utils/up-api-types';
+import { useTransactions } from '../utils/apiHooks';
+import {
+	Box,
+	HStack,
+	Flex,
+	Text,
+	VStack,
+	Avatar,
+	Input,
+} from '@chakra-ui/react';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const IndexPage = () => {
+	// components.
+	const { data, error } = useTransactions();
 
-export default IndexPage
+	return (
+		<Layout>
+			<HStack justify="start" align="start">
+				<Box mr={2}>
+					<Text>Enter your up code:</Text>
+					<Input type="text"></Input>
+				</Box>
+				<VStack>
+					{data?.map((el) => (
+						<Flex align="left">
+							<Avatar name={el.attributes.description} mr={2} />
+							<VStack maxW={300} dir="column" justify="start" align="start">
+								<Box>{el.attributes.message} </Box>
+								<Box>{el.attributes.rawText} </Box>
+								<Box>{el.id}</Box>
+								<Box>{el.attributes.description}</Box>
+
+								<Box>{el.relationships.category.data?.id}</Box>
+								<Box>{el.attributes.amount.value}</Box>
+							</VStack>
+						</Flex>
+					))}
+				</VStack>
+			</HStack>
+		</Layout>
+	);
+};
+
+export default IndexPage;
