@@ -12,6 +12,7 @@ import {
 	Input,
 	CircularProgress,
 	Spinner,
+	Badge,
 } from '@chakra-ui/react';
 
 const IndexPage = () => {
@@ -25,19 +26,35 @@ const IndexPage = () => {
 					<Text>Enter your up code:</Text>
 					<Input type="text"></Input>
 				</Box>
-				<VStack>
+				<VStack align="flex-start" spacing={2}>
 					{data ? (
-						data?.map((el) => (
-							<Flex align="left">
+						data.map((el) => (
+							<Flex
+								align="left"
+								minW={350}
+								justify="start"
+								bg="gray.50"
+								p={3}
+								rounded="md"
+							>
 								<Avatar name={el.attributes.description} mr={2} />
 								<VStack maxW={300} dir="column" justify="start" align="start">
 									<Box>{el.attributes.message} </Box>
-									<Box>{el.attributes.rawText} </Box>
-									<Box>{el.id}</Box>
-									<Box>{el.attributes.description}</Box>
-
-									<Box>{el.relationships.category.data?.id}</Box>
-									<Box>{el.attributes.amount.value}</Box>
+									{/* <Box>{el.attributes.rawText} </Box> */}
+									{/* <Box>{el.id}</Box> */}
+									<Text d="inline-flex">
+										{el.attributes.description}
+										<Text>{el.relationships.category.data?.id}</Text>
+									</Text>
+									{el.attributes.amount.valueInBaseUnits > 0 ? (
+										<Badge colorScheme="green">
+											{el.attributes.amount.value}
+										</Badge>
+									) : (
+										<Badge colorScheme="red">
+											{el.attributes.amount.value}
+										</Badge>
+									)}
 								</VStack>
 							</Flex>
 						))
