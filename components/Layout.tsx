@@ -1,25 +1,6 @@
-import {
-	Avatar,
-	Box,
-	Button,
-	chakra,
-	Container,
-	Link,
-	Table,
-	TableCaption,
-	Tbody,
-	Td,
-	Th,
-	Thead,
-	Tr,
-	useColorMode,
-} from '@chakra-ui/react';
-import { Item, PrismaClient } from '@prisma/client';
-import { GetServerSideProps } from 'next';
+import { Box, Container, useColorMode } from '@chakra-ui/react';
 import Head from 'next/head';
 import React from 'react';
-import { SimpleNavbar } from '../generic/SimpleNavbar';
-import StyledLink from '../generic/StyledLink';
 
 interface Props {
 	withContainer?: boolean;
