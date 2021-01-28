@@ -13,7 +13,9 @@ import {
 	CircularProgress,
 	Spinner,
 	Badge,
+	Grid,
 } from '@chakra-ui/react';
+import Accounts from '../components/Accounts';
 
 const IndexPage = () => {
 	// components.
@@ -25,6 +27,8 @@ const IndexPage = () => {
 				<Box mr={2}>
 					<Text>Enter your up code:</Text>
 					<Input type="text"></Input>
+
+					<Accounts />
 				</Box>
 				<VStack align="flex-start" spacing={2}>
 					{data ? (
@@ -39,13 +43,17 @@ const IndexPage = () => {
 							>
 								<Avatar name={el.attributes.description} mr={2} />
 								<VStack maxW={300} dir="column" justify="start" align="start">
-									<Box>{el.attributes.message} </Box>
+									<Text>{el.attributes.message} </Text>
 									{/* <Box>{el.attributes.rawText} </Box> */}
 									{/* <Box>{el.id}</Box> */}
 									<Text d="inline-flex">
 										{el.attributes.description}
-										<Text>{el.relationships.category.data?.id}</Text>
+										{/* <Text>{el.relationships.category.data?.id}</Text> */}
 									</Text>
+									{/* <Grid templateColumns="repeat(2, 1fr)">
+										{el.attributes.description}
+										<Text>{el.relationships.category.data?.id}</Text>
+									</Grid> */}
 									{el.attributes.amount.valueInBaseUnits > 0 ? (
 										<Badge colorScheme="green">
 											{el.attributes.amount.value}

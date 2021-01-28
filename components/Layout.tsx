@@ -18,8 +18,16 @@ const Layout: React.FC<Props> = (props: Props) => {
 	return (
 		<Box>
 			<Head>
+				<meta
+					property="og:image"
+					content="https://og-image.now.sh/%F0%9F%98%9B%F0%9F%98%9B%F0%9F%98%9B%E2%9C%85%F0%9F%92%B8%F0%9F%92%AA.png?theme=dark&md=1&fontSize=175px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&widths=0&heights=0"
+				/>
 				<title>91wal</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link
+					rel="icon"
+					href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/check-mark-button_2705.png"
+				/>
+				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			{/* <SimpleNavbar
         title="PLEXIMUS"

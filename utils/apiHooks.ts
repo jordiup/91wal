@@ -8,3 +8,6 @@ import {
 
 export const useTransactions = () =>
 	useSWR<Components.Schemas.TransactionResource[]>('/api/transactions');
+
+export const useAccounts = () =>
+	useSWR<Components.Schemas.AccountResource[]>('/api/accounts');
