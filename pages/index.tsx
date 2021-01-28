@@ -10,6 +10,8 @@ import {
 	VStack,
 	Avatar,
 	Input,
+	CircularProgress,
+	Spinner,
 } from '@chakra-ui/react';
 
 const IndexPage = () => {
@@ -24,20 +26,24 @@ const IndexPage = () => {
 					<Input type="text"></Input>
 				</Box>
 				<VStack>
-					{data?.map((el) => (
-						<Flex align="left">
-							<Avatar name={el.attributes.description} mr={2} />
-							<VStack maxW={300} dir="column" justify="start" align="start">
-								<Box>{el.attributes.message} </Box>
-								<Box>{el.attributes.rawText} </Box>
-								<Box>{el.id}</Box>
-								<Box>{el.attributes.description}</Box>
+					{data ? (
+						data?.map((el) => (
+							<Flex align="left">
+								<Avatar name={el.attributes.description} mr={2} />
+								<VStack maxW={300} dir="column" justify="start" align="start">
+									<Box>{el.attributes.message} </Box>
+									<Box>{el.attributes.rawText} </Box>
+									<Box>{el.id}</Box>
+									<Box>{el.attributes.description}</Box>
 
-								<Box>{el.relationships.category.data?.id}</Box>
-								<Box>{el.attributes.amount.value}</Box>
-							</VStack>
-						</Flex>
-					))}
+									<Box>{el.relationships.category.data?.id}</Box>
+									<Box>{el.attributes.amount.value}</Box>
+								</VStack>
+							</Flex>
+						))
+					) : (
+						<Spinner />
+					)}
 				</VStack>
 			</HStack>
 		</Layout>
