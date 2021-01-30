@@ -22,7 +22,7 @@ const IndexPage = () => {
 					<Accounts />
 					<NextPayment />
 				</Stack>
-				<VStack align="flex-start" spacing={2}>
+				<VStack align="flex-start" spacing={2} minW={250}>
 					{data ? (
 						data.map((el) => <TransactionItem transaction={el} />)
 					) : (

@@ -15,7 +15,7 @@ interface NavLink {
 }
 
 export const SimpleNav = (props: Props) => {
-	const {} = useColorMode();
+	const { colorMode } = useColorMode();
 	return (
 		<chakra.header w="full" h="4.5rem" pos="fixed" top="0" left="0" p={3}>
 			<Flex w="100%" h="100%" flexDir="row" alignItems="center" px={5}>
@@ -29,8 +29,13 @@ export const SimpleNav = (props: Props) => {
 					{props.title && (
 						<Heading
 							size="md"
-							bgGradient="linear(to-l, #28cabf,#b4ff00)"
+							bgGradient={
+								colorMode === 'dark'
+									? 'linear(to-l, #28cabf,#b4ff00)'
+									: 'linear(to-l, #007eff,#00d687)'
+							}
 							bgClip="text"
+							transition="all 2s ease"
 						>
 							{props.title}
 						</Heading>

@@ -1,6 +1,13 @@
 import React from 'react';
 import { useAccounts } from '../utils/apiHooks';
-import { Box, Text, Stat, StatHelpText, StatNumber } from '@chakra-ui/react';
+import {
+	Box,
+	Text,
+	Stat,
+	StatHelpText,
+	StatNumber,
+	Spinner,
+} from '@chakra-ui/react';
 import FlexCard from './FlexCard';
 import MoneyBadge from './MoneyBadge';
 
@@ -11,8 +18,8 @@ const Accounts = (props: Props) => {
 	console.log(data);
 
 	return (
-		<FlexCard>
-			{data &&
+		<FlexCard minHeight="80px">
+			{data ? (
 				data.map((el) => (
 					<>
 						<Stat>
@@ -21,7 +28,10 @@ const Accounts = (props: Props) => {
 						</Stat>
 						{/* <Text>Account balance: </Text>${el.attributes.balance.value} */}
 					</>
-				))}
+				))
+			) : (
+				<Spinner />
+			)}
 		</FlexCard>
 	);
 };
