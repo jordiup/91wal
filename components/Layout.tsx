@@ -22,6 +22,7 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 					property="og:image"
 					content="https://og-image.now.sh/%F0%9F%98%9B%F0%9F%98%9B%F0%9F%98%9B%E2%9C%85%F0%9F%92%B8%F0%9F%92%AA.png?theme=dark&md=1&fontSize=175px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&widths=0&heights=0"
 				/>
+				<meta property="og:image" content="/meta-image.png" />
 				<title>91wal</title>
 				<link
 					rel="icon"

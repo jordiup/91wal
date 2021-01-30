@@ -1,4 +1,4 @@
-import { chakra, Flex, Heading, Link } from '@chakra-ui/react';
+import { chakra, Flex, Heading, Link, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 interface Props {
@@ -15,9 +15,10 @@ interface NavLink {
 }
 
 export const SimpleNav = (props: Props) => {
+	const {} = useColorMode();
 	return (
 		<chakra.header w="full" h="4.5rem" pos="fixed" top="0" left="0" p={3}>
-			<Flex w="100%" h="100%" flexDir="row" alignItems="center">
+			<Flex w="100%" h="100%" flexDir="row" alignItems="center" px={5}>
 				{/* Title/logo */}
 				<Link
 					href={props.homeLink ? props.homeLink : ''}
@@ -25,7 +26,15 @@ export const SimpleNav = (props: Props) => {
 					alignItems="center"
 					mr={4}
 				>
-					{props.title && <Heading size="md">{props.title}</Heading>}
+					{props.title && (
+						<Heading
+							size="md"
+							bgGradient="linear(to-l, #28cabf,#b4ff00)"
+							bgClip="text"
+						>
+							{props.title}
+						</Heading>
+					)}
 				</Link>
 
 				{/* Nav items */}

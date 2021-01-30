@@ -7,6 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 	if (req.method === 'GET') {
 		try {
+			client.get;
 			const resp = await client.getAccounts();
 			const transactionsOnly = resp.data.data.filter(
 				(el) => el.attributes.accountType === 'TRANSACTIONAL'
