@@ -27,6 +27,10 @@ const IndexPage = () => {
 				<Box mr={2}>
 					<Text>Enter your up code:</Text>
 					<Input type="text"></Input>
+Send me some coin and refresh the page :)
+Name: Jordi Hermoso Clarke
+BSB: 633123
+Acc #: 167636570
 
 					<Accounts />
 				</Box>
