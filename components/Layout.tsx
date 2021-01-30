@@ -1,10 +1,10 @@
-import { Box, Container, useColorMode } from '@chakra-ui/react';
+import { Box, Container, useColorMode, Flex, Button } from '@chakra-ui/react';
 import Head from 'next/head';
 import React from 'react';
+import { SimpleNav } from './SimpleNav';
 
 interface Props {
 	withContainer?: boolean;
-	children?: React.ReactNode;
 }
 
 /**
@@ -12,7 +12,7 @@ interface Props {
  * @param param0
  */
 
-const Layout: React.FC<Props> = (props: Props) => {
+const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
@@ -29,28 +29,25 @@ const Layout: React.FC<Props> = (props: Props) => {
 				/>
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
-			{/* <SimpleNavbar
-        title="PLEXIMUS"
-        navlinks={[
-          { path: "/", text: "Items" },
-          { path: "/contacts", text: "Contacts" },
-          { path: "/companies", text: "Companies" },
-          { path: "/product-ranges", text: "Product Ranges" },
-        ]}
-        ctaItems={[
-          <Button onClick={toggleColorMode} size="xs">
-            {colorMode == "dark" ? "🌞" : "🌜"}
-          </Button>,
-          <StyledLink href="/logout">Logout</StyledLink>,
-          <Avatar size="xs" />,
-        ]}
-      /> */}
+			<SimpleNav
+				title="91Wal"
+				// navlinks={[
+				// 	{ path: '/', text: 'Items' },
+				// ]}
+				ctaItems={[
+					<Button onClick={toggleColorMode} size="xs">
+						{colorMode == 'dark' ? '🌞' : '🌜'}
+					</Button>,
+					// <StyledLink href="/logout">Logout</StyledLink>,
+					// <Avatar size="xs" />,
+				]}
+			/>
 			{/* mt 4.5 is needed to offset the navbar */}
 			<Box as="main" mt="4.5rem" p={2}>
-				{props.withContainer ? (
-					<Container maxW="1200px">{props.children}</Container>
+				{withContainer ? (
+					<Container maxW="1200px" {...rest} />
 				) : (
-					props.children
+					<Flex {...rest}></Flex>
 				)}
 			</Box>
 		</Box>
