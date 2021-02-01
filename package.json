@@ -6,8 +6,8 @@
 		"build": "next build",
 		"start": "next start",
 		"generate": "yarn typegen ./utils/openapi.json > ./utils/up-client.d.ts",
-		"generate1": "npx openapi-typescript https://raw.githubusercontent.com/up-banking/api/master/v1/openapi.json --output ./utils/up-api-types.ts",
-		"generate2": "npx openapi-typescript ./utils/openapi.json --output ./utils/up-api-types.ts",
+		"_generate1": "npx openapi-typescript https://raw.githubusercontent.com/up-banking/api/master/v1/openapi.json --output ./utils/_up-api-types.ts",
+		"_generate2": "npx openapi-typescript ./utils/openapi.json --output ./utils/_up-api-types.ts",
 		"type-check": "tsc"
 	},
 	"dependencies": {

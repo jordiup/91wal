@@ -1,4 +1,14 @@
-import { Box, Container, useColorMode, Flex, Button } from '@chakra-ui/react';
+import {
+	Box,
+	Container,
+	useColorMode,
+	Flex,
+	Button,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem,
+} from '@chakra-ui/react';
 import Head from 'next/head';
 import React from 'react';
 import { SimpleNav } from './SimpleNav';
@@ -18,17 +28,37 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 	return (
 		<Box>
 			<Head>
+				{/* Primary */}
+				<title>91Wal - Sharehouse Dashboard</title>
+				<meta name="title" content="91Wal - Sharehouse Dashboard" />
+				<meta
+					name="description"
+					content="A sharehouse dashboard ⚡️ Displaying account balance, scheduled rent, and recent transactions. Utilizing Up's API.  "
+				/>
+
+				{/* Open Graph / Facebook */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://91wal.now.sh/" />
+				<meta property="og:title" content="91Wal - Sharehouse Dashboard" />
+				<meta
+					property="og:description"
+					content="A sharehouse dashboard ⚡️ Displaying account balance, scheduled rent, and recent transactions. Utilizing Up's API.  "
+				/>
 				<meta property="og:image" content="/meta-image.png" />
-				{/* <meta
-					property="og:image"
-					content="https://og-image.now.sh/%F0%9F%98%9B%F0%9F%98%9B%F0%9F%98%9B%E2%9C%85%F0%9F%92%B8%F0%9F%92%AA.png?theme=dark&md=1&fontSize=175px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&widths=0&heights=0"
-				/> */}
-				<title>91wal</title>
+
+				{/* Twitter */}
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:url" content="https://91wal.now.sh/" />
+				<meta property="twitter:title" content="91Wal - Sharehouse Dashboard" />
+				<meta
+					property="twitter:description"
+					content="A sharehouse dashboard ⚡️ Displaying account balance, scheduled rent, and recent transactions. Utilizing Up's API.  "
+				/>
+				<meta property="twitter:image" content="/meta-image.png" />
 				<link
 					rel="icon"
 					href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/check-mark-button_2705.png"
 				/>
-				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			<SimpleNav
 				title="91Wal"
@@ -36,9 +66,17 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 				// 	{ path: '/', text: 'Items' },
 				// ]}
 				ctaItems={[
-					<Button onClick={toggleColorMode} size="xs">
+					<Button onClick={toggleColorMode} size="xs" mr={3}>
 						{colorMode == 'dark' ? '🌞' : '🌜'}
 					</Button>,
+					<Menu>
+						<MenuButton as={Button} size="xs">
+							⚙️
+						</MenuButton>
+						<MenuList>
+							<MenuItem>pg1</MenuItem>
+						</MenuList>
+					</Menu>,
 					// <StyledLink href="/logout">Logout</StyledLink>,
 					// <Avatar size="xs" />,
 				]}

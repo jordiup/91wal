@@ -63,23 +63,7 @@ export interface paths {
      * exposed via the `tags` relationship on the transaction resource returned
      * from `/transactions/{id}`.
      */
-    delete: {
-      parameters: {
-        path: {
-          /** The unique identifier for the transaction. */
-          transactionId: string;
-        };
-      };
-      responses: {
-        /** Successful Response */
-        204: never;
-      };
-      requestBody: {
-        content: {
-          "application/json": components["schemas"]["UpdateTransactionTagsRequest"];
-        };
-      };
-    };
+    delete: operations["removeTagFromTransaction"];
   };
   "/transactions": {
     /**
@@ -148,18 +132,7 @@ export interface paths {
      * Delete a specific webhook by providing its unique identifier. Once
      * deleted, webhook events will no longer be sent to the configured URL.
      */
-    delete: {
-      parameters: {
-        path: {
-          /** The unique identifier for the webhook. */
-          id: string;
-        };
-      };
-      responses: {
-        /** Deleted */
-        204: never;
-      };
-    };
+    delete: operations["deleteWebhook"];
   };
   "/webhooks/{webhookId}/ping": {
     /**
@@ -1013,6 +986,30 @@ export interface operations {
     };
   };
   /**
+   * Disassociates one or more tags from a specific transaction. Tags that are
+   * not associated are silently ignored. An HTTP `204` is returned on
+   * success. The associated tags, along with this request URL, are also
+   * exposed via the `tags` relationship on the transaction resource returned
+   * from `/transactions/{id}`.
+   */
+  removeTagFromTransaction: {
+    parameters: {
+      path: {
+        /** The unique identifier for the transaction. */
+        transactionId: string;
+      };
+    };
+    responses: {
+      /** Successful Response */
+      204: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UpdateTransactionTagsRequest"];
+      };
+    };
+  };
+  /**
    * Retrieve a list of all transactions across all accounts for the currently
    * authenticated user. The returned list is [paginated](#pagination) and can
    * be scrolled by following the `next` and `prev` links where present. To
@@ -1219,6 +1216,22 @@ export interface operations {
           "application/json": components["schemas"]["GetWebhookResponse"];
         };
       };
+    };
+  };
+  /**
+   * Delete a specific webhook by providing its unique identifier. Once
+   * deleted, webhook events will no longer be sent to the configured URL.
+   */
+  deleteWebhook: {
+    parameters: {
+      path: {
+        /** The unique identifier for the webhook. */
+        id: string;
+      };
+    };
+    responses: {
+      /** Deleted */
+      204: never;
     };
   };
   /**
