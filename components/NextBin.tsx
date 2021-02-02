@@ -21,6 +21,7 @@ const NextBin = (props: Props) => {
     };
 
     const daysUntilNextBin = differenceInDays(nextBinDate, new Date());
+
     let tagColour = "";
     if(daysUntilNextBin < 3) {
         tagColour = "red";
@@ -28,10 +29,7 @@ const NextBin = (props: Props) => {
         tagColour = "blue";
     };
 
-    console.log (tagColour)
-
     let weekDifference = differenceInWeeks(new Date(), baseBinDate);
-
     let binBoy = "";
     switch (weekDifference % 3) {
         case 0:
