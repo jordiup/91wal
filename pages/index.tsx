@@ -5,6 +5,7 @@ import TransactionItem from '../components/TransactionItem';
 import { useTransactions } from '../utils/apiHooks';
 import NextPayment from '../components/NextPayment';
 import NextBin from '../components/NextBin';
+import AccountDetails from '../components/AccountDetails';
 
 const IndexPage = () => {
 	// components.
@@ -21,6 +22,7 @@ const IndexPage = () => {
 			>
 				<Stack spacing={4}>
 					<Accounts />
+					<AccountDetails p={0} />
 					<NextPayment />
 					<NextBin />
 				</Stack>

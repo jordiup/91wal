@@ -74,7 +74,16 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 							⚙️
 						</MenuButton>
 						<MenuList>
-							<MenuItem>pg1</MenuItem>
+							<MenuItem>
+								<a href="/api/login" style={{ width: '100%' }}>
+									Login 🔑
+								</a>
+							</MenuItem>
+							<MenuItem>
+								<a href="/api/logout" style={{ width: '100%' }}>
+									Logout 🔒
+								</a>
+							</MenuItem>
 						</MenuList>
 					</Menu>,
 					// <StyledLink href="/logout">Logout</StyledLink>,

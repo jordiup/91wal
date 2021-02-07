@@ -7,9 +7,11 @@ import {
 	StatHelpText,
 	StatNumber,
 	Spinner,
+	Flex,
 } from '@chakra-ui/react';
 import FlexCard from './FlexCard';
 import MoneyBadge from './MoneyBadge';
+import AccountDetails from './AccountDetails';
 
 interface Props {}
 
@@ -21,13 +23,12 @@ const Accounts = (props: Props) => {
 		<FlexCard minHeight="80px">
 			{data ? (
 				data.map((el) => (
-					<>
+					<Flex flexDir="column">
 						<Stat>
 							<StatHelpText mb={0}>Account balance</StatHelpText>
 							<StatNumber>${el.attributes.balance.value}</StatNumber>
 						</Stat>
-						{/* <Text>Account balance: </Text>${el.attributes.balance.value} */}
-					</>
+					</Flex>
 				))
 			) : (
 				<Spinner />
