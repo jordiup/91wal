@@ -27,11 +27,9 @@ const IndexPage = () => {
 					<NextBin />
 				</Stack>
 				<VStack align="flex-start" spacing={2} minW={250}>
-					{data ? (
-						data.map((el) => <TransactionItem transaction={el} />)
-					) : (
-						<Spinner />
-					)}
+					{data
+						? data.map((el) => <TransactionItem transaction={el} />)
+						: [1, 2, 3].map((el) => <TransactionItem loading />)}
 				</VStack>
 			</Center>
 		</Layout>
