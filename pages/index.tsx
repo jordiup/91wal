@@ -5,6 +5,7 @@ import TransactionItem from '../components/TransactionItem';
 import { useTransactions } from '../utils/apiHooks';
 import NextPayment from '../components/NextPayment';
 import NextBin from '../components/NextBin';
+import AccountDetails from '../components/AccountDetails';
 
 const IndexPage = () => {
 	// components.
@@ -21,15 +22,14 @@ const IndexPage = () => {
 			>
 				<Stack spacing={4}>
 					<Accounts />
+					<AccountDetails p={0} />
 					<NextPayment />
 					<NextBin />
 				</Stack>
 				<VStack align="flex-start" spacing={2} minW={250}>
-					{data ? (
-						data.map((el) => <TransactionItem transaction={el} />)
-					) : (
-						<Spinner />
-					)}
+					{data
+						? data.map((el) => <TransactionItem transaction={el} />)
+						: [1, 2, 3].map(() => <TransactionItem loading />)}
 				</VStack>
 			</Center>
 		</Layout>

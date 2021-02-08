@@ -8,10 +8,13 @@ import {
 	MenuButton,
 	MenuList,
 	MenuItem,
+	Portal,
+	Avatar,
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import React from 'react';
 import { SimpleNav } from './SimpleNav';
+import { useMe } from '../utils/apiHooks';
 
 interface Props {
 	withContainer?: boolean;
@@ -24,6 +27,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 	const { colorMode, toggleColorMode } = useColorMode();
+	const { data, error } = useMe();
 
 	return (
 		<Box>
@@ -70,11 +74,29 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 						{colorMode == 'dark' ? '🌞' : '🌜'}
 					</Button>,
 					<Menu>
-						<MenuButton as={Button} size="xs">
-							⚙️
-						</MenuButton>
+						{data && !data.error ? (
+							<MenuButton
+								as={Avatar}
+								size="sm"
+								cursor="pointer"
+								src={data.picture || undefined}
+								_hover={{ bg: 'teal', boxShadow: 'md' }}
+							/>
+						) : (
+							<CogButton />
+						)}
+						{/* <CogButton /> */}
 						<MenuList>
-							<MenuItem>pg1</MenuItem>
+							<MenuItem>
+								<a href="/api/login" style={{ width: '100%' }}>
+									Login 🔑
+								</a>
+							</MenuItem>
+							<MenuItem>
+								<a href="/api/logout" style={{ width: '100%' }}>
+									Logout 🔒
+								</a>
+							</MenuItem>
 						</MenuList>
 					</Menu>,
 					// <StyledLink href="/logout">Logout</StyledLink>,
@@ -92,5 +114,7 @@ const Layout: React.FC<Props> = ({ withContainer, ...rest }: Props) => {
 		</Box>
 	);
 };
+
+const CogButton = () => <MenuButton as={Button} children="⚙️" size="xs" />;
 
 export default Layout;
