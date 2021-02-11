@@ -17,9 +17,11 @@
 		"@emotion/styled": "^11.0.0",
 		"date-fns": "^2.16.1",
 		"framer-motion": "^3.2.2-rc.1",
+		"heroku": "^7.47.12",
 		"next": "latest",
 		"openapi-client-axios-typegen": "^1.1.11",
 		"path": "^0.12.7",
+		"pg": "^8.5.1",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"swr": "^0.4.0"
