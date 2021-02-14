@@ -17,7 +17,6 @@ interface Props {}
 
 const Accounts = (props: Props) => {
 	const { data, error } = useAccounts();
-	console.log(data);
 
 	return (
 		<FlexCard minHeight="80px">
